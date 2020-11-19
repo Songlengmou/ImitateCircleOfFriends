@@ -29,7 +29,7 @@ import butterknife.OnClick;
  */
 public class MainActivity extends AppCompatActivity {
     @BindView(R.id.recycler_view)
-    RecyclerView recycler_view;
+    RecyclerView recyclerView;
     @BindView(R.id.appBar)
     AppBarLayout appBarLayout;
     @BindView(R.id.image1)
@@ -42,16 +42,15 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-
         initViews();
     }
 
     private void initViews() {
-        appBarLayout.addOnOffsetChangedListener((appBarLayout1, verticalOffset) -> {
+        appBarLayout.addOnOffsetChangedListener((appBarLayout, verticalOffset) -> {
             CollapsingToolbarLayout collapsingToolbar = findViewById(R.id.collapsing_toolbar);
             int color = Color.argb(200, 0, 0, 0);
             collapsingToolbar.setCollapsedTitleTextColor(color);
-            if (Math.abs(verticalOffset) >= appBarLayout1.getTotalScrollRange()) { //折叠状态
+            if (Math.abs(verticalOffset) >= appBarLayout.getTotalScrollRange()) { //折叠状态
                 collapsingToolbar.setTitle("朋友圈");
                 imageView.setVisibility(View.GONE);
                 collapsingToolbar.setCollapsedTitleGravity(Gravity.CENTER);//设置收缩后标题的位置
@@ -62,13 +61,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        recycler_view.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
         for (int i = 0; i < 10; i++) {
             Friend friend = new Friend(i);
             friendList.add(friend);
         }
         MyAdapter adapter = new MyAdapter(R.layout.item_my_feed_back, friendList);
-        recycler_view.setAdapter(adapter);
+        recyclerView.setAdapter(adapter);
     }
 
     @OnClick(R.id.btn_photo)

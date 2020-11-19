@@ -49,7 +49,6 @@ public class UpLoadActivity extends AppCompatActivity {
         }
         setContentView(R.layout.activity_up_load);
         ButterKnife.bind(this);
-
         initView();
     }
 

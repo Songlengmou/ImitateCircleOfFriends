@@ -26,11 +26,11 @@ public class ImageDetailFragment extends Fragment {
     private PhotoViewAttacher mAttacher;
 
     public static ImageDetailFragment newInstance(String imageUrl) {
-        final ImageDetailFragment f = new ImageDetailFragment();
-        final Bundle args = new Bundle();
-        args.putString("url", imageUrl);
-        f.setArguments(args);
-        return f;
+        ImageDetailFragment fragment = new ImageDetailFragment();
+        Bundle bundle = new Bundle();
+        bundle.putString("url", imageUrl);
+        fragment.setArguments(bundle);
+        return fragment;
     }
 
     @Override
@@ -42,12 +42,12 @@ public class ImageDetailFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        final View v = inflater.inflate(R.layout.image_detail_fragment, container, false);
-        mImageView = v.findViewById(R.id.image);
-        progressBar = v.findViewById(R.id.loading);
+        View view = inflater.inflate(R.layout.image_detail_fragment, container, false);
+        mImageView = view.findViewById(R.id.image);
+        progressBar = view.findViewById(R.id.loading);
         mAttacher = new PhotoViewAttacher(mImageView);
         mAttacher.setOnPhotoTapListener((arg0, arg1, arg2) -> getActivity().finish());
-        return v;
+        return view;
     }
 
     @Override

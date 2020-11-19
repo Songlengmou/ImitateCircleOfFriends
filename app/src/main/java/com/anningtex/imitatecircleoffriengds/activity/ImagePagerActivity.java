@@ -8,9 +8,9 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.widget.TextView;
 
-import com.anningtex.imitatecircleoffriengds.widgets.HackyViewPager;
-import com.anningtex.imitatecircleoffriengds.fragment.ImageDetailFragment;
 import com.anningtex.imitatecircleoffriengds.R;
+import com.anningtex.imitatecircleoffriengds.fragment.ImageDetailFragment;
+import com.anningtex.imitatecircleoffriengds.widgets.HackyViewPager;
 
 import java.util.ArrayList;
 
@@ -40,8 +40,8 @@ public class ImagePagerActivity extends FragmentActivity {
         ImagePagerAdapter mAdapter = new ImagePagerAdapter(getSupportFragmentManager(), urls);
         mPager.setAdapter(mAdapter);
 
-        CharSequence text = getString(R.string.viewpager_indicator, 1, mPager.getAdapter().getCount());
-        indicator.setText(text);
+        CharSequence sequence = getString(R.string.viewpager_indicator, 1, mPager.getAdapter().getCount());
+        indicator.setText(sequence);
         // 更新下标
         mPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
 
@@ -55,8 +55,8 @@ public class ImagePagerActivity extends FragmentActivity {
 
             @Override
             public void onPageSelected(int arg0) {
-                CharSequence text = getString(R.string.viewpager_indicator, arg0 + 1, mPager.getAdapter().getCount());
-                indicator.setText(text);
+                CharSequence charSequence = getString(R.string.viewpager_indicator, arg0 + 1, mPager.getAdapter().getCount());
+                indicator.setText(charSequence);
             }
         });
         if (savedInstanceState != null) {
